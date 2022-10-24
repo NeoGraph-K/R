@@ -387,8 +387,8 @@
         6. install.packages('remotes') - 깃허브 사용 패키지 설치
         7. remotes::install_github('haven-jeon/KoNLP', upgrade='never', INSTALL_opts=c('--no-multiarch'))
         8. 영어 패키지 tm, NLP, stringr 사용
-            1. paste(문장들, collapse='') - 문장 합치기
-            2. gsub(patter='\\W',replace='',문장) - 구두점 제거
+            1. paste(문장들, collapse='공백') - 문장 합치기
+            2. gsub(patter='\\W',replace='공백',문장) - 구두점 제거
             3. tolower(문장) - 데이터 소문자화
             4. stopwords - 불용어
             5. removeWords(문장,불용어벡터) - 특정 문자 제거
