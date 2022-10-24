@@ -377,7 +377,64 @@
         2. pie(벡터,labels=이름)
 ## R 7일차
 1. 텍스트 마이닝
+    1. 무작위한 문장들 사이에서 유의미한 단어를 찾는 기술
+    2. KoNLP 패키지 사용(R의 거의 유일한 한글 텍스트 마이닝 패키지)
+        1. jdk 설치
+        2. rJava 패키지 설치
+        3. rJava::.jinit() 에러 없는지 확인
+        4. install.packages("multilinguer")
+        5. multilinguer::install_jdk() 으로 jdk 자동 설치
+        6. install.packages('remotes') - 깃허브 사용 패키지 설치
+        7. remotes::install_github('haven-jeon/KoNLP', upgrade='never', INSTALL_opts=c('--no-multiarch'))
+        8. 영어 패키지 tm, NLP, stringr 사용
+            1. paste(문장들, collapse='') - 문장 합치기
+            2. gsub(patter='\\W',replace='',문장) - 구두점 제거
+            3. tolower(문장) - 데이터 소문자화
+            4. stopwords - 불용어
+            5. removeWords(문장,불용어벡터) - 특정 문자 제거
+            6. stripWhitespace(문장) - 공란 제거
+            7. str_split(문장,pattern='\\s+') - 문장을 단어의 조각으로 나열 및 "" 뒤 공백 띄우기
+            8. unlist(리스트) - 리스트를 벡터로
+    3. setwd('위치') R의 경로 변경
+    4. list.files() 현재 위치의 파일 목록 벡터로 반환
+    5. readLines('파일') 내용을 행단위로 읽어 벡터로 반환
+    6. 사용법
+        1. useSejongDic() - 한글 명사 사전 추가
+        2. sapply(데이터,함수,USE.NAMES=F) 데이터들을 특정 함수로 처리한 결과물 리스트로 반환
+        3. unlist(리스트) 리스트를 벡터로 변환
+        4. table(벡터) 데이터의 빈도수를 반환
+        5. sort(데이터, decreasing=T) 내림차순 정렬
+        6. head(데이터, 100) 상위 데이터 추출
+        7. names(테이블) 빈도 단어의 이름 추출
+    7. 전처리
+        1. 원하는 단어 추가
+        2. buildDictionary(ext_dic='woorimalsam',user_dic=dafa.frame('명사단어','ncn'),replace_usr_dic=T) 단어 추가
+            1. http://kkma.snu.ac.kr/documents/index.jsp?doc=postag
+        3. Filter(nchar(글자)>=2, 데이터셋) 일정 글자수 이상 남기기
+        4. gsub - 불용어 처리
+            1. gsub(find,replace,데이터셋) - 단어를 찾아서 변경 ('')로 변경시 단어 제거 가능
+            2. 정규표현식을 이용한 제거 가능
+            3. '[~!@#$%^&()_+=?<>]' 를 이용한 제거
+            4. '\\[' 를 이용한 제거
+            5. '[ㄱ-ㅎ]'를 이용한 제거
+            6. '(ㅜ|ㅠ)' 제거
+            7. '\\d+' 숫자 삭제
 2. 워드 클라우드
+    1. 단어의 빈도수에 따라 크기별 구름으로 그려주는 다이어그램
+    2. wordcloud 패키지 사용
+    3. RColorBrewer 패키지 사용(R의 기본 원색이 아닌 추가 색 사용)
+        1. display.brewer.all() - 전체 색상
+        2. brewer.pal(개수, 세트이름)
+        3. windowsFonts(font=windowsFont('폰트명'))
+    4. wordcloud(단어벡터,빈도벡터,...) 으로 사용
+        1. scale=c(10,1) 최고빈도 폰트와 최소빈도 폰트
+        2. minfreq=n 출력될 최소빈도 수
+        3. maxwords=n 출력될 최대빈도 수(inf:무제한)
+        4. random.order=T,F 무작위로 넣을지, 아니면 순서대로 할지
+        5. random.color=T,F 무작위로 넣을지, 아니면 빈도순으로 할지
+        6. rot.per=n 회전각도로 출력되는 비율
+        7. colors=c(색,...) 가장 작은 빈도부터 가장 큰 빈도까지 단어 색상
+        8. family=폰트 폰트 지정
 ## R 8일차
 1. Linear Regression - 선형 회귀 분석
 ## R 9일차
