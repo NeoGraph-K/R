@@ -536,7 +536,7 @@
         1. 여러개의 데이터로 군집분석을 했을때 각 독립변수들의 관측치가 군집별로 어떻게 구성되는지 파악하는 그래프
         2. GGally 패키지 이용
         3. ggparcoord함수 이용
-        4. ggparcoord(data=데이터셋,columns=c(1:독립변수개수),groupColumn='cluster',scale='std')로 사용
+        4. ggparcoord(data=데이터셋,columns=c(1:독립변수개수),groupColumn=그룹화할열이름,scale='std')로 사용
         5. ggparcoord에 넣는 데이터 셋은 오리지널 데이터에 as.factor로 분류화한 kmeans 결과물의 cluster를 추가한 데이터셋을 이용
             1. origin$cluster <- kmeans()$cluster
         6. gorupColumn은 군집 분석용인 cluster로 고정
